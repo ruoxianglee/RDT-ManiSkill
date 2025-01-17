@@ -426,7 +426,6 @@ class DataCollatorForVLAConsumerDataset(object):
                 input_ids.append(instance["input_ids"])
             else:
                 lang_embeds.append(instance["lang_embed"])
-                print("language embedding: ----------------", instance["lang_embed"])
                 lang_embed_lens.append(instance["lang_embed"].shape[0])
             
             batch["images"].append(torch.stack(instance["images"], dim=0))

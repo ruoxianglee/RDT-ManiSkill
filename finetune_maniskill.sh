@@ -13,6 +13,8 @@ export CUTLASS_PATH="/root/cutlass"
 
 export WANDB_PROJECT="robotic_diffusion_transformer"
 
+export NCCL_SOCKET_IFNAME=en,eth,em,bond
+
 if [ ! -d "$OUTPUT_DIR" ]; then
     mkdir "$OUTPUT_DIR"
     echo "Folder '$OUTPUT_DIR' created"
@@ -41,7 +43,7 @@ accelerate launch main.py \
     --mixed_precision="bf16" \
     --dataloader_num_workers=8 \
     --image_aug \
-    --precomp_lang_embed \
+    # --precomp_lang_embed \
     --dataset_type="finetune" \
     --state_noise_snr=40 \
     --load_from_hdf5 \

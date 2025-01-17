@@ -351,7 +351,7 @@ def train(args, logger):
         # Since EMA is deprecated, we do not load EMA from the pretrained checkpoint
         logger.info("Loading from a pretrained checkpoint.")
         checkpoint = torch.load(args.pretrained_model_name_or_path)
-        rdt.load_state_dict(checkpoint["module"])
+        rdt.module.load_state_dict(checkpoint["module"])
    
     # Potentially load in the weights and states from a previous save
     if args.resume_from_checkpoint:
