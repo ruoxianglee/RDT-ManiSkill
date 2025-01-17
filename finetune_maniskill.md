@@ -80,16 +80,16 @@ conda activate rdt
 
 cd ManiSkill
 
-python mani_skill/examples/motionplanning/panda/run.py -e "GraspCup-v1" --record-dir "/root/autodl-tmp/demos/" --traj-name="trajectory_cpu" -n 1000 --sim-backend "cpu" --only-count-success
+python mani_skill/examples/motionplanning/panda/run.py -e "GraspCup-v1" --record-dir "/xxxxx/demos/" --traj-name="trajectory_cpu" -n 1000 --sim-backend "cpu" --only-count-success
 
-python -m mani_skill.trajectory.replay_trajectory --traj-path "/root/autodl-tmp/demos/GraspCup-v1/motionplanning/trajectory_cpu.h5" --use-first-env-state --sim-backend cpu -c pd_joint_pos -o rgb --save-traj --num-procs 16
+python -m mani_skill.trajectory.replay_trajectory --traj-path "/xxxxx/demos/GraspCup-v1/motionplanning/trajectory_cpu.h5" --use-first-env-state --sim-backend cpu -c pd_joint_pos -o rgb --save-traj --num-procs 16
 
 ```
 Note: modify the `record-dir` and `traj-path` accordingly.
 
 
 ## Finetune RDT with ManiSkill Data
-Configure demo path in Line 43 in `data/hdf5_vla_dataset.py`: `self.data_dir = "/root/autodl-tmp/demos/"`
+Configure demo path in Line 43 in `data/hdf5_vla_dataset.py`: `self.data_dir = "/xxxxx/demos/"`
 
 ```
 conda activate rdt
