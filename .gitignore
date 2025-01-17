@@ -172,7 +172,8 @@ outs/
 
 # Checkpoints
 checkpoints/
-
+*.pt
+*.bin
 # VSC
 .vscode/
 

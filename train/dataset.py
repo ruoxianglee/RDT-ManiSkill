@@ -354,7 +354,7 @@ class VLAConsumerDataset(Dataset):
                 if self.use_precomp_lang_embed:
                     if content["instruction"][-1] == ".":
                         content["instruction"] = content["instruction"][:-1]
-                    data_dict["lang_embed"] = torch.load(f"text_embed_GraspCup-v1.pt") \
+                    data_dict["lang_embed"] = torch.load(f"/root/RoboticsDiffusionTransformer/GraspCup-v1.pt") \
                         if random.random() > self.cond_mask_prob else self.empty_lang_embed
                 else:
                     instruction = content["instruction"] \
@@ -426,6 +426,7 @@ class DataCollatorForVLAConsumerDataset(object):
                 input_ids.append(instance["input_ids"])
             else:
                 lang_embeds.append(instance["lang_embed"])
+                print("language embedding: ----------------", instance["lang_embed"])
                 lang_embed_lens.append(instance["lang_embed"].shape[0])
             
             batch["images"].append(torch.stack(instance["images"], dim=0))
