@@ -75,6 +75,10 @@ Download https://github.com/NVIDIA/cutlass.git and modify Line 12 in `finetune_m
 ## Prepare Demonstration
 Generate 1,000 trajectories for GraspCup-v1 task through motion planning in ManiSkill.
 
+Note: 
+ - modify the arguments `record-dir` and `traj-path` accordingly.
+ - After replaying trajectories, remember to remove the original trajectory_cpu.h5 and trajectory_cpu.json from directory `"/xxxxx/demos/GraspCup-v1/motionplanning/"`. Just keep the newly generated hdf5 and json files in this directory.
+
 ```bash
 conda activate rdt
 
@@ -85,7 +89,6 @@ python mani_skill/examples/motionplanning/panda/run.py -e "GraspCup-v1" --record
 python -m mani_skill.trajectory.replay_trajectory --traj-path "/xxxxx/demos/GraspCup-v1/motionplanning/trajectory_cpu.h5" --use-first-env-state --sim-backend cpu -c pd_joint_pos -o rgb --save-traj --num-procs 16
 
 ```
-Note: modify the `record-dir` and `traj-path` accordingly.
 
 
 ## Finetune RDT with ManiSkill Data
